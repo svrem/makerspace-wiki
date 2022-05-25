@@ -8,7 +8,7 @@ const Logo = ({ out }: Props) => {
       <style jsx>{`
         .logo {
           position: fixed;
-          right: 10px;
+          right: 20px;
           bottom: 10px;
           width: 200px;
           max-width: 25%;
@@ -18,7 +18,7 @@ const Logo = ({ out }: Props) => {
         }
       `}</style>
 
-      <img src="/logo.png" className={"logo"} alt="Makerspace Logo" />
+      <img src="/MakerSpaceLogo.png" className={"logo"} alt="Makerspace Logo" />
     </>
   );
 };

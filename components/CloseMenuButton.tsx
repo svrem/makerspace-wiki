@@ -12,6 +12,7 @@ const CloseMenuButton = ({ setOut }: Props) => {
       sx={{
         position: "absolute",
         right: "2%",
+
         top: ".5%",
       }}
       onClick={() => setOut(false)}

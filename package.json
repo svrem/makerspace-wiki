@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -16,12 +17,14 @@
     "axios": "^0.27.2",
     "canvas": "^2.9.1",
     "fs": "^0.0.1-security",
+    "i": "^0.3.7",
     "js-file-download": "^0.4.12",
     "next": "12.1.6",
+    "npm": "^8.10.0",
+    "qr.js": "^0.0.0",
     "react": "18.1.0",
     "react-dom": "18.1.0",
-    "react-markdown": "^8.0.3",
-    "react-qr-code": "^2.0.7"
+    "react-markdown": "^8.0.3"
   },
   "devDependencies": {
     "@types/node": "17.0.35",
