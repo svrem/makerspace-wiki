@@ -1,6 +1,6 @@
 # Hello World
 
-## Hello World Cringe af my guy
+## Hello World
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed ex quis est mattis varius. Nunc vitae arcu massa. Nam non rutrum lacus, id viverra eros. Aenean metus lorem, faucibus ut tellus tempor, rhoncus lacinia mi. Integer vehicula velit purus, et fermentum lectus egestas eget. Mauris dictum dui vitae eros pretium semper. Quisque porttitor ligula id tellus consectetur condimentum. Vestibulum ipsum est, commodo non risus pharetra, tristique mattis nisl. Nam at velit malesuada, finibus justo vitae, ullamcorper nisl. Suspendisse sed arcu ut urna interdum tempus. Quisque eu efficitur augue. Morbi vitae varius nisi.
 

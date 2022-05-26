@@ -13,6 +13,7 @@ const Logo = ({ out }: Props) => {
           width: 200px;
           max-width: 25%;
           opacity: ${out ? 0 : 1};
+          user-select: none;
 
           transition: all 0.5s ease-in-out 0.1s;
         }

@@ -16,7 +16,7 @@ type Props = {
 const Page = ({ pageContent, files, folder }: Props) => {
   const [qrOpen, setQrOpen] = useState(false);
   const [url, setUrl] = useState("https://google.com");
-  const [out, setOut] = useState(true);
+  const [out, setOut] = useState(false);
 
   useEffect(() => {
     if (window !== undefined) {
@@ -26,8 +26,8 @@ const Page = ({ pageContent, files, folder }: Props) => {
   });
 
   useEffect(() => {
-    if (window.innerWidth < 600) {
-      setOut(false);
+    if (window.innerWidth > 600) {
+      setOut(true);
     }
   }, [setUrl]);
 

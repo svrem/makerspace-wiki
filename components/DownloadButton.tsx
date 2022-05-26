@@ -1,7 +1,5 @@
 import { Download } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import axios from "axios";
-import fileDownload from "js-file-download";
 import React from "react";
 
 type Props = {
@@ -12,7 +10,7 @@ type Props = {
 const DownloadButton = ({ file, folder }: Props) => {
   return (
     <IconButton
-      aria-label="Download Bestand"
+      aria-label={`Download Bestand: ${file}`}
       onClick={async () => {
         // const res = await axios.get(`/doc_files/${folder}/files/${file}`);
         // fileDownload(res.data, file);
