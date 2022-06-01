@@ -50,7 +50,7 @@ const Page = ({ pageContent, files, folder }: Props) => {
       `}</style>
 
       <Logo out={out} />
-      <QrCode url={url} setQrOpen={setQrOpen} qrOpen={qrOpen} />
+      <QrCode url={url} setQrOpen={setQrOpen} qrOpen={qrOpen} label={folder} />
       <SideBar
         files={files}
         setQrOpen={setQrOpen}
@@ -66,6 +66,12 @@ const Page = ({ pageContent, files, folder }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { page } = ctx.query;
+  if (!fs.existsSync(`./doc_files/${page}`)) {
+    return {
+      notFound: true,
+    };
+  }
+
   const pageContent = fs.readFileSync(`./doc_files/${page}/index.md`, "utf8");
   const files = fs.readdirSync(`./doc_files/${page}/files`);
 

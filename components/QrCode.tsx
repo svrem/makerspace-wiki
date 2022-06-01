@@ -6,15 +6,16 @@ type Props = {
   url: string;
   setQrOpen: React.Dispatch<React.SetStateAction<boolean>>;
   qrOpen: boolean;
+  label: string;
 };
 
-const QrCode = ({ url, setQrOpen, qrOpen }: Props) => {
+const QrCode = ({ url, setQrOpen, qrOpen, label }: Props) => {
   return (
     <>
       <style jsx>
         {`
           .container {
-            padding: 50px;
+            padding: 1%;
             border-radius: 25px;
             box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
             aspect-ratio: 1;
@@ -38,7 +39,7 @@ const QrCode = ({ url, setQrOpen, qrOpen }: Props) => {
         }}
       >
         <div className="container">
-          <img alt="Qr Code" src={createQr(url)} className="qrcode" />
+          <img alt="Qr Code" src={createQr(url, label)} className="qrcode" />
         </div>
       </Backdrop>
     </>
