@@ -66,14 +66,14 @@ const Page = ({ pageContent, files, folder }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { page } = ctx.query;
-  if (!fs.existsSync(`./doc_files/${page}`)) {
+  if (!fs.existsSync(`/doc_files/${page}`)) {
     return {
       notFound: true,
     };
   }
 
-  const pageContent = fs.readFileSync(`./doc_files/${page}/index.md`, "utf8");
-  const files = fs.readdirSync(`./doc_files/${page}/files`);
+  const pageContent = fs.readFileSync(`/doc_files/${page}/index.md`, "utf8");
+  const files = fs.readdirSync(`/doc_files/${page}/files`);
 
   return {
     props: {
