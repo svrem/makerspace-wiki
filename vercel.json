@@ -1,7 +1,7 @@
 {
   "functions": {
     "pages/api/data/*.js": {
-      "includeFiles": "doc_files/**"
+      "includeFiles": "/public/doc_files/**"
     }
   }
 }
