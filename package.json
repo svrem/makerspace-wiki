@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "now-build": "cp canvas_lib64/*so.1 node_modules/canvas/build/Release/"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
