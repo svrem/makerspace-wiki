@@ -1,8 +1,4 @@
-import { Download } from "@mui/icons-material";
-import { IconButton } from "@mui/material";
 import React from "react";
-import fileDownload from "js-file-download";
-import axios from "axios";
 import DownloadButton from "./DownloadButton";
 
 type Props = {
