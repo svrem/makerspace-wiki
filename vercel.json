@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/data/[folder].ts": {
+      "includeFiles": "doc_files/**"
+    }
+  }
+}
