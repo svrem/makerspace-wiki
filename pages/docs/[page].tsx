@@ -79,9 +79,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   console.log("wow");
 
-  const pageContent = fs.readFileSync(page_dir + "/index.md", "utf8");
+  const pageContent = await fs.readFileSync(page_dir + "/index.md", "utf8");
   console.log("among us is sussy imposter v1");
-  const files = fs.readdirSync(page_dir + "/files");
+  const files = await fs.readdirSync(page_dir + "/files");
 
   console.log("among us is sussy imposter v2");
 
