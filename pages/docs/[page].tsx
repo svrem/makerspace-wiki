@@ -6,6 +6,7 @@ import SideBar from "../../components/SideBar";
 import QrCode from "../../components/QrCode";
 import OpenMenuButton from "../../components/OpenMenuButton";
 import Logo from "../../components/Logo";
+import path from "path";
 
 type Props = {
   pageContent: string;
@@ -66,17 +67,20 @@ const Page = ({ pageContent, files, folder }: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { page } = ctx.query;
-  if (!fs.existsSync(`./public/doc_files/${page}`)) {
+
+  const page_dir = path.resolve("./public", `doc_files/${page}`);
+
+  if (!fs.existsSync(page_dir)) {
+    console.log("not wow");
     return {
       notFound: true,
     };
   }
 
-  const pageContent = fs.readFileSync(
-    `./public/doc_files/${page}/index.md`,
-    "utf8"
-  );
-  const files = fs.readdirSync(`./public/doc_files/${page}/files`);
+  console.log("wow");
+
+  const pageContent = fs.readFileSync(page_dir + "/index.md", "utf8");
+  const files = fs.readdirSync(page_dir + "/files");
 
   return {
     props: {
