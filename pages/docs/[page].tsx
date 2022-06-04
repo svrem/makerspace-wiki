@@ -72,8 +72,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
-  const pageContent = fs.readFileSync(`/doc_files/${page}/index.md`, "utf8");
-  const files = fs.readdirSync(`/doc_files/${page}/files`);
+  const pageContent = fs.readFileSync(`./doc_files/${page}/index.md`, "utf8");
+  const files = fs.readdirSync(`./doc_files/${page}/files`);
 
   return {
     props: {
