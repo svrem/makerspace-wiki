@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/data/[folder].ts": {
+    "api/data/*.ts": {
       "includeFiles": "doc_files/**"
     }
   }
