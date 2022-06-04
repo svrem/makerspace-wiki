@@ -1,7 +1,0 @@
-{
-    "functions": {
-        "docs/[page].tsx": {
-            "includeFiles": "doc_files/**" 
-        }
-    }
-}
