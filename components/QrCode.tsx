@@ -2,6 +2,7 @@
 // import createQr from "../utils/create_qr";
 import { Backdrop } from "@mui/material";
 import { useEffect } from "react";
+// @ts-ignore
 import qr from "qr.js";
 
 type Props = {
