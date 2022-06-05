@@ -51,11 +51,17 @@ const Page = ({}: Props) => {
       }
 
       const data = await res.json();
+      // @ts-ignore
+      setFolder(router.query.page);
       setFiles(data.files);
       setPageContent(data.pageContent);
     };
 
-    if (window !== undefined && router.query.page !== undefined) {
+    if (
+      window !== undefined &&
+      router.query.page !== undefined &&
+      typeof router.query.page === "string"
+    ) {
       fetchData().catch((err) => {
         console.log(err);
         setNotFound(true);
