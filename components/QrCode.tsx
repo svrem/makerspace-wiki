@@ -1,5 +1,3 @@
-// import QRCode from "react-qr-code";
-// import createQr from "../utils/create_qr";
 import { Backdrop } from "@mui/material";
 import { useEffect } from "react";
 // @ts-ignore
@@ -48,7 +46,7 @@ const QrCode = ({ url, setQrOpen, qrOpen, label }: Props) => {
       ctx.textAlign = "center";
       ctx.fillText(label, width / 2, height - 2);
     }
-  }, []);
+  });
 
   return (
     <>

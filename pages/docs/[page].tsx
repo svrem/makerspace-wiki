@@ -7,6 +7,7 @@ import OpenMenuButton from "../../components/OpenMenuButton";
 import Logo from "../../components/Logo";
 import DefaultErrorPage from "next/error";
 import { useRouter } from "next/router";
+import { Backdrop, CircularProgress } from "@mui/material";
 
 type Props = {
   pageContent: string;
@@ -24,10 +25,12 @@ const Page = ({}: Props) => {
   const [pageContent, setPageContent] = useState("");
   const [notFound, setNotFound] = useState(false);
   const [folder, setFolder] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (window !== undefined) {
       setUrl(window.location.href);
+      console.log(url);
       document.title = `${folder} - ${pageContent.split("\n")[0]}`;
     }
   });
@@ -55,15 +58,11 @@ const Page = ({}: Props) => {
       setFolder(router.query.page);
       setFiles(data.files);
       setPageContent(data.pageContent);
+      setLoading(false);
     };
 
-    if (
-      window !== undefined &&
-      router.query.page !== undefined &&
-      typeof router.query.page === "string"
-    ) {
+    if (window !== undefined && router.query.page !== undefined) {
       fetchData().catch((err) => {
-        console.log(err);
         setNotFound(true);
       });
     }
@@ -90,6 +89,19 @@ const Page = ({}: Props) => {
           transition: all 0.5s ease-in-out;
         }
       `}</style>
+
+      <Backdrop
+        open={loading}
+        sx={{
+          zIndex: 10,
+        }}
+      >
+        <CircularProgress
+          sx={{
+            color: "white",
+          }}
+        />
+      </Backdrop>
 
       <Logo out={out} />
       <QrCode url={url} setQrOpen={setQrOpen} qrOpen={qrOpen} label={folder} />
