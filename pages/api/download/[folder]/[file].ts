@@ -1,11 +1,13 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
+import axios from "axios";
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   const { folder, file } = req.query;
 
-  const buffer = fs.readFileSync(`public/doc_files/${folder}/files/${file}`);
+  const axios_res = await axios.get(
+    `https://knowgistics.nl/serverSiep/download/${folder}/${file}`
+  );
 
   res.setHeader("Content-disposition", `attachment; filename=${file}`);
-  res.status(200).send(buffer);
-};
+  res.status(200).send(axios_res.data);
+}

@@ -1,5 +1,0 @@
-# Heat Press
-
-## Links
-
-[Youtube]()

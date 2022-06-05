@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import ReactMarkdown from "react-markdown";
-import fs from "fs";
 import SideBar from "../../components/SideBar";
 import QrCode from "../../components/QrCode";
 import OpenMenuButton from "../../components/OpenMenuButton";
 import Logo from "../../components/Logo";
-import path from "path";
+import DefaultErrorPage from "next/error";
+import { useRouter } from "next/router";
 
 type Props = {
   pageContent: string;
@@ -14,10 +14,16 @@ type Props = {
   folder: string;
 };
 
-const Page = ({ pageContent, files, folder }: Props) => {
+const Page = ({}: Props) => {
+  const router = useRouter();
+
   const [qrOpen, setQrOpen] = useState(false);
   const [url, setUrl] = useState("https://google.com");
   const [out, setOut] = useState(false);
+  const [files, setFiles] = useState<string[]>([]);
+  const [pageContent, setPageContent] = useState("");
+  const [notFound, setNotFound] = useState(false);
+  const [folder, setFolder] = useState("");
 
   useEffect(() => {
     if (window !== undefined) {
@@ -31,6 +37,35 @@ const Page = ({ pageContent, files, folder }: Props) => {
       setOut(true);
     }
   }, [setUrl]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`/api/data/${router.query.page}`).catch(() => {
+        setNotFound(true);
+        return undefined;
+      });
+
+      if (!res || !res.ok) {
+        setNotFound(true);
+        return new Error("Error fetching data");
+      }
+
+      const data = await res.json();
+      setFiles(data.files);
+      setPageContent(data.pageContent);
+    };
+
+    if (window !== undefined && router.query.page !== undefined) {
+      fetchData().catch((err) => {
+        console.log(err);
+        setNotFound(true);
+      });
+    }
+  }, [router.query.page]);
+
+  if (notFound) {
+    return <DefaultErrorPage statusCode={404} />;
+  }
 
   return (
     <div
@@ -65,33 +100,20 @@ const Page = ({ pageContent, files, folder }: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { page } = ctx.query;
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   const { page } = ctx.query;
 
-  const page_dir = path.resolve("./public", `doc_files/${page}`);
+//   const res = await axios.get(`https://knowgistics.nl/serverSiep/data/${page}`);
 
-  if (!fs.existsSync(page_dir)) {
-    console.log("not wow");
-    return {
-      notFound: true,
-    };
-  }
+//   const { pageContent, files } = res.data;
 
-  console.log("wow");
-
-  const pageContent = await fs.readFileSync(page_dir + "/index.md", "utf8");
-  console.log("among us is sussy imposter v1");
-  const files = await fs.readdirSync(page_dir + "/files");
-
-  console.log("among us is sussy imposter v2");
-
-  return {
-    props: {
-      pageContent,
-      files,
-      folder: page,
-    },
-  };
-};
+//   return {
+//     props: {
+//       pageContent,
+//       files,
+//       folder: page,
+//     },
+//   };
+// };
 
 export default Page;
